@@ -16,7 +16,7 @@ import uz.market.market.SliderAdapter
 import uz.market.market.ViewModel.MainViewModel
 import uz.market.market.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private val viewModel=MainViewModel()
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
