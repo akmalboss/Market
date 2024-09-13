@@ -2,17 +2,12 @@ package uz.market.market.activity
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import uz.market.market.Model.SliderModel
-import uz.market.market.R
-import uz.market.market.SliderAdapter
+import uz.market.market.Adapter.SliderAdapter
 import uz.market.market.ViewModel.MainViewModel
 import uz.market.market.databinding.ActivityMainBinding
 
@@ -38,7 +33,7 @@ class MainActivity : BaseActivity() {
         viewModel.loadBanners()
     }
     private fun banners(images:List<SliderModel>){
-        binding.viewpagerSlider.adapter=SliderAdapter(images,binding.viewpagerSlider)
+        binding.viewpagerSlider.adapter= SliderAdapter(images,binding.viewpagerSlider)
         binding.viewpagerSlider.clipToPadding=false
         binding.viewpagerSlider.clipChildren=false
         binding.viewpagerSlider.offscreenPageLimit=3
