@@ -16,7 +16,7 @@
         android:layout_weight="1"
         android:background="@drawable/grey_bg"
         android:padding="2dp"
-        tools:srcCompat="@drawable/grey_bg" />
+        android:src="@drawable/grey_bg" />
 
     <TextView
         android:id="@+id/title"
