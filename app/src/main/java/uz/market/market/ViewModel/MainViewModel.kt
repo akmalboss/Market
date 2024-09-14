@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import uz.market.market.Model.BrandModel
+import uz.market.market.Model.ItemModel
 import uz.market.market.Model.SliderModel
 
 class MainViewModel() : ViewModel() {
@@ -16,8 +17,10 @@ class MainViewModel() : ViewModel() {
 
     private val _banner = MutableLiveData<List<SliderModel>>()
     private val _brand = MutableLiveData<MutableList<BrandModel>>()
+    private val _popular = MutableLiveData<MutableList<ItemModel>>()
 
     val brands: LiveData<MutableList<BrandModel>> = _brand
+    val popular: LiveData<MutableList<ItemModel>> = _popular
     val banners: LiveData<List<SliderModel>> = _banner
 
     fun loadBanners() {
@@ -52,6 +55,26 @@ class MainViewModel() : ViewModel() {
                     }
                 }
                 _brand.value=lists
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
+    fun loadPopular(){
+        val Ref=firebaseDatabase.getReference("Items")
+        Ref.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val lists= mutableListOf<ItemModel>()
+                for (childSnapshot in snapshot.children){
+                    val list=childSnapshot.getValue(ItemModel::class.java)
+                    if (list != null){
+                        lists.add(list)
+                    }
+                }
+                _popular.value=lists
             }
 
             override fun onCancelled(error: DatabaseError) {
