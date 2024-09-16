@@ -1,6 +1,7 @@
 package uz.market.market.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.request.RequestOptions
 import uz.market.market.Model.ItemsModel
+import uz.market.market.activity.DetailActivity
 import uz.market.market.databinding.ViewholderRecommendedBinding
 
 class PopularAdapter(val items: MutableList<ItemsModel>) :
@@ -34,9 +36,11 @@ class PopularAdapter(val items: MutableList<ItemsModel>) :
             .apply(requestOptions)
             .into(holder.binding.pic)
 
-//        holder.itemView.setOnClickListener {
-//            val intent=Intent(holder.itemView.context)
-//        }
+        holder.itemView.setOnClickListener {
+            val intent= Intent(holder.itemView.context,DetailActivity::class.java)
+            intent.putExtra("object",items[position])
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = items.size

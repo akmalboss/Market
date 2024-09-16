@@ -19,7 +19,7 @@
  *  and unicode 2017 that are used for separating the items in a list.
  */
 
-package com.example.project1762.Helper;
+package uz.market.market.Helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -41,6 +41,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
+
+import uz.market.market.Model.ItemsModel;
 
 
 public class TinyDB {
