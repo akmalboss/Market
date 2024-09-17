@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Market</string>
+    <string name="explorer">Explorer</string>
+    <string name="cart">Cart</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="my_order">My Order</string>
+    <string name="profile">Profile</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="see_all">See all</string>
+    <string name="offical_brand">Offical Brand</string>
+    <string name="welcome_back">Welcome Back</string>
 </resources>

@@ -22,6 +22,7 @@ class CartActivity : BaseActivity() {
 
         setVariable()
         initCartList()
+        calculatorCart()
     }
 
     private fun initCartList() {
