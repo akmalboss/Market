@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import uz.market.market.Model.BrandModel
 import uz.market.market.Model.ItemsModel
@@ -82,5 +83,28 @@ class MainViewModel() : ViewModel() {
             }
 
         })
+    }
+
+    fun loadFiltered(id:String) {
+        val Ref = firebaseDatabase.getReference("Items")
+        val query: Query = Ref.orderByChild("categoryId").equalTo(id)
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val lists = mutableListOf<ItemsModel>()
+                for (childSnapshot in snapshot.children) {
+                    val list = childSnapshot.getValue(ItemsModel::class.java)
+                    if (list != null) {
+                        lists.add(list)
+                    }
+                }
+                _popular.value = lists
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+
     }
 }
