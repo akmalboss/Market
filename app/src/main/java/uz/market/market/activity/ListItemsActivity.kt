@@ -38,6 +38,8 @@ class ListItemsActivity : BaseActivity() {
         }
     }
 
+
+
     private fun getBundle() {
         id= intent.getStringExtra("id")!!
         title=intent.getStringExtra("title")!!

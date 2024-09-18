@@ -19,10 +19,13 @@ class MainViewModel() : ViewModel() {
     private val _banner = MutableLiveData<List<SliderModel>>()
     private val _brand = MutableLiveData<MutableList<BrandModel>>()
     private val _popular = MutableLiveData<MutableList<ItemsModel>>()
+    private val _items = MutableLiveData<MutableList<ItemsModel>>()
+
 
     val brands: LiveData<MutableList<BrandModel>> = _brand
     val popular: LiveData<MutableList<ItemsModel>> = _popular
     val banners: LiveData<List<SliderModel>> = _banner
+    val items: MutableLiveData<MutableList<ItemsModel>> = _items
 
     fun loadBanners() {
         val Ref = firebaseDatabase.getReference("Banner")
@@ -97,7 +100,7 @@ class MainViewModel() : ViewModel() {
                         lists.add(list)
                     }
                 }
-                _popular.value = lists
+                _items.value = lists
             }
 
             override fun onCancelled(error: DatabaseError) {

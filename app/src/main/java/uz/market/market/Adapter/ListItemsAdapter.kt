@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import uz.market.market.Model.BrandModel
 import uz.market.market.Model.ItemsModel
 import uz.market.market.activity.DetailActivity
 import uz.market.market.databinding.ViewholderRecommendedBinding
 
 class ListItemsAdapter(val items: MutableList<ItemsModel>) :
     RecyclerView.Adapter<ListItemsAdapter.Viewholder>() {
+
 
     class Viewholder(val binding: ViewholderRecommendedBinding) :
         RecyclerView.ViewHolder(binding.root)
